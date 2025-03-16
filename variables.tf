@@ -9,3 +9,9 @@ variable "groups" {
   }))
   description = "Map of groups to create in Azure AD."
 }
+
+variable "azuredevops_pat" {
+  type        = string
+  description = "Azure DevOps Personal Access Token (PAT)."
+  sensitive   = true
+}
