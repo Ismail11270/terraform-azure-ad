@@ -1,12 +1,3 @@
-provider "azuread" {
-  tenant_id = var.tenant_id
-}
-
-provider "azuredevops" {
-  org_service_url       = "https://dev.azure.com/webbats"
-  personal_access_token = var.azuredevops_pat
-}
-
 data "azuread_domains" "default" {
   only_initial = true
 }
@@ -73,5 +64,5 @@ resource "azuredevops_user_entitlement" "users" {
   for_each = { for user in local.users : user.Email => user }
 
   principal_name       = each.value.Email
-  account_license_type = "express" # or "stakeholder" or "basic"
+  account_license_type = "basic" # or "stakeholder" or "basic"
 }

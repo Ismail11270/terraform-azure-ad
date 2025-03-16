@@ -1,4 +1,5 @@
 tenant_id = ""
+azuredevops_pat = ""
 
 groups = {
   readers = {

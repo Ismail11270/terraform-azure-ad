@@ -14,7 +14,8 @@ output "group_membership_ids" {
 }
 
 output "user_passwords" {
-    value = module.users.password
+    value = module.users.user_passwords
+    sensitive = true
     description = "Passwords for newly created users"
 }
 
