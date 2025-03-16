@@ -1,9 +1,21 @@
-# Create Azure AD Users
-resource "azuread_user" "users" {
-  for_each = var.users
+resource "random_password" "example" {
+  length  = 32
+  special = true
+  lower   = true
+  upper   = true
+  numeric  = true
+}
 
-  user_principal_name = each.value.user_principal_name
-  display_name        = each.value.display_name
-  mail_nickname       = each.value.mail_nickname
-  password            = each.value.password
+resource "azuread_user" "users" {
+  for_each = { for user in var.users : user.Email => user }
+
+  user_principal_name = each.value.Email
+  display_name        = each.value.Name
+  mail_nickname       = split("@", each.value.Email)[0] # Derive mail_nickname from email
+  password = random_password.example.result
+  lifecycle {
+    ignore_changes = [
+      password
+    ]
+  }
 }

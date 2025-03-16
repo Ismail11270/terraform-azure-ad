@@ -1,3 +1,2 @@
-Name,Email,Password,Groups
-Ismoil,Ismoil@webbats.com,password1234,group1,group2,group3,group4
-Piotr,Piotr@webbats.com,password1234,group2,group3,group4
+Name,Email,Groups
+Alice,Alice@webbats.com,readers

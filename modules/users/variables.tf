@@ -1,8 +1,8 @@
 variable "users" {
-  type = map(object({
-    user_principal_name = string
-    display_name        = string
-    mail_nickname       = string
-    password            = string
+  type = list(object({
+    Name   = string
+    Email  = string
+    Groups = string
   }))
+  description = "List of users to create in Azure AD."
 }
